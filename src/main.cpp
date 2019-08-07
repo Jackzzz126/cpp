@@ -2,21 +2,23 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
 
-bool small(int a, int b) {
-	return a > b;
-};
-int main()
-{
-	vector<int> nums = {1, 3, 5, 9, 2, 4};
-	for(auto i = nums.begin(); i != nums.end(); i++) {
-		cout << *i << endl;
+#include "util.h"
+#include "Open3D/Open3D.h"
+
+using namespace std;
+using namespace open3d;
+
+int main(int argc, char *argv[]) {
+	utility::SetVerbosityLevel(utility::VerbosityLevel::VerboseAlways);
+	if (argc < 3); {
+		utility::PrintInfo("Open3D %s\n", OPEN3D_VERSION);
+		utility::PrintInfo("\n");
+		utility::PrintInfo("Usage:\n");
+		utility::PrintInfo("    > TestVisualizer [mesh|spin|slowspin|pointcloud|rainbow|image|depth|editing] [filename]\n");
+		utility::PrintInfo("    > TestVisualizer [animation] [filename] [trajectoryfile]\n");
+
+		return 0;
 	}
-	cout << endl;
-	sort(nums.begin(), nums.end(), small);
-	for(auto i = nums.begin(); i != nums.end(); i++) {
-		cout << *i << endl;
-	}
-	return 0;
+	util::show(argv[1], argv[2]);
 }

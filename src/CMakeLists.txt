@@ -1,8 +1,9 @@
 AUX_SOURCE_DIRECTORY(./ SRC_LIST)
 ADD_EXECUTABLE(a ${SRC_LIST})
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
 
-#include_directories(${PROJECT_SOURCE_DIR}/include)
+#INCLUDE_DIRECTORIES("/usr/include/eigen3")
 #link_directories(${PROJECT_SOURCE_DIR}/lib)})})
 #if(${CMAKE_BUILD_TYPE} MATCHES "debug")
 #	target_link_libraries(hellod Ad Bd.a Cd.so)
@@ -22,7 +23,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${Open3D_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Open3D_CXX_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${Open3D_EXE_LINKER_FLAGS}")
 
-message(STATUS "${CMAKE_CXX_FLAGS}")
 # Set OS-specific things here
 if(WIN32)
 elseif(CYGWIN)
