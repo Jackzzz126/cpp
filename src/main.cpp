@@ -11,7 +11,8 @@ using namespace open3d;
 
 int main(int argc, char *argv[]) {
 	utility::SetVerbosityLevel(utility::VerbosityLevel::VerboseAlways);
-	if (argc < 3); {
+	if (argc < 3) {
+		utility::PrintInfo("%d", argc);
 		utility::PrintInfo("Open3D %s\n", OPEN3D_VERSION);
 		utility::PrintInfo("\n");
 		utility::PrintInfo("Usage:\n");
@@ -20,5 +21,9 @@ int main(int argc, char *argv[]) {
 
 		return 0;
 	}
-	util::show(argv[1], argv[2]);
+	if(argc == 3) {
+		util::show(argv[1], argv[2]);
+	} else {
+		util::show(argv[1], argv[2], argv[3]);
+	}
 }

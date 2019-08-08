@@ -8,7 +8,6 @@ using namespace open3d;
 
 namespace util{
 	void show(const string& typeName, const string& fileName, const string& trajectoryFileName) {
-		utility::SetVerbosityLevel(utility::VerbosityLevel::VerboseAlways);
 		if (typeName == "mesh") {
 			auto mesh_ptr = std::make_shared<geometry::TriangleMesh>();
 			if (io::ReadTriangleMesh(fileName, *mesh_ptr)) {
