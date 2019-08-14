@@ -1,29 +1,36 @@
 #include <cstdio>
 #include <iostream>
 #include <vector>
+#include <map>
 #include <algorithm>
-
-#include "util.h"
-#include "Open3D/Open3D.h"
-
 using namespace std;
+
+#include "Open3D/Open3D.h"
 using namespace open3d;
 
-int main(int argc, char *argv[]) {
-	utility::SetVerbosityLevel(utility::VerbosityLevel::VerboseAlways);
-	if (argc < 3) {
-		utility::PrintInfo("%d", argc);
-		utility::PrintInfo("Open3D %s\n", OPEN3D_VERSION);
-		utility::PrintInfo("\n");
-		utility::PrintInfo("Usage:\n");
-		utility::PrintInfo("    > TestVisualizer [mesh|spin|slowspin|pointcloud|rainbow|image|depth|editing] [filename]\n");
-		utility::PrintInfo("    > TestVisualizer [animation] [filename] [trajectoryfile]\n");
+#include "util.h"
+#include "cmdline.h"
 
-		return 0;
-	}
-	if(argc == 3) {
-		util::show(argv[1], argv[2]);
-	} else {
-		util::show(argv[1], argv[2], argv[3]);
+
+int main(int argc, char *argv[]) {
+	cmdline::parser parser;
+
+	parser.add<string>("operation", 'o', "operation name", false, "make", cmdline::oneof<string>("make", "intergration"));
+	parser.add<string>("config", 'c', "config file", false, "./config.json");
+
+	parser.parse_check(argc, argv);
+	string op = parser.get<string>("operation");
+	string configFilePath = parser.get<string>("config");
+
+	map<string, string> config;
+	config["aaa"] = "aaa";
+	config["bbb"] = "bbb";
+	config["ccc"] = "ccc";
+	//if(!util::loadConfig(configFilePath/*, gConfig*/)) {
+	//	utility::PrintError("Read config file error");
+	//	return 1;
+	//}
+	for(auto k : config) {
+		cout<<k.first<<":"<<k.second<<endl;
 	}
 }
