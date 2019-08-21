@@ -142,5 +142,26 @@ bool loadConfig(const string& configFilePath/*, map<int, int>& config*/) {
 	return true;
 }
 
+vector<string> splitStr(const string &str, const string &pattern)
+{
+	vector<string> resVec;
+
+	if ("" == str) {
+		return resVec;
+	}
+	size_t posStart = 0;
+	size_t posEnd = str.find(pattern);
+
+	while (posEnd != string::npos)
+	{
+		resVec.push_back(str.substr(posStart, posEnd));
+		posStart = posEnd;
+		posEnd = str.find(pattern);
+	}
+	resVec.push_back(str.substr(posStart, posEnd));
+
+	return resVec;
+}
+
 };// eof ns util
 
