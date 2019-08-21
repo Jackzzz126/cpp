@@ -11,7 +11,10 @@ using namespace open3d;
 #include "util.h"
 #include "cmdline.h"
 
+//#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 
+#ifndef CATCH_CONFIG_MAIN
 int main(int argc, char *argv[]) {
 	cmdline::parser parser;
 
@@ -34,3 +37,4 @@ int main(int argc, char *argv[]) {
 		cout<<k.first<<":"<<k.second<<endl;
 	}
 }
+#endif//CATCH_CONFIG_MAIN
