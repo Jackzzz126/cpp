@@ -1,6 +1,0 @@
-[submodule "third-party/cmdline"]
-	path = third-party/cmdline
-	url = https://github.com/tanakh/cmdline.git
-[submodule "third-party/rapidjson"]
-	path = third-party/rapidjson
-	url = https://github.com/Tencent/rapidjson.git
