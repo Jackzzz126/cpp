@@ -26,10 +26,10 @@ int main(int argc, char *argv[]) {
 	parser.parse_check(argc, argv);
 	string op = parser.get<string>("operation");
 	string configFilePath = parser.get<string>("config");
-	string intrinsicFilePath = parser.get<string>("config");
+	string intrinsicFilePath = parser.get<string>("intrinsic");
 
 	Config config;
-	if(!config.LoadFromJson(intrinsicFilePath)) {
+	if(!config.LoadFromJson(configFilePath)) {
 		return 1;
 	}
 

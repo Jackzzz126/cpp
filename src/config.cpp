@@ -16,8 +16,7 @@ bool Config::LoadFromJson(const string& jsonFilePath) {
 	doc.ParseStream(is);
 	fclose(fp);
 
-    if(doc.HasParseError())
-    {
+    if(doc.HasParseError()) {
 		utility::PrintError("Error when parse %s", jsonFilePath.c_str());
 		return false;
     }
@@ -32,11 +31,11 @@ bool Config::LoadFromJson(const string& jsonFilePath) {
 		} else if(doc[itr->name.GetString()].IsDouble()) {
 			doubleValues_[nameStr] = doc[nameStr].GetDouble();
 		} else if(doc[itr->name.GetString()].IsArray()) {
-			utility::PrintWarning("Find array type %s in json, skip", nameStr);
+			utility::PrintWarning("Find array type %s in json, skip\n", nameStr);
 		} else if(doc[itr->name.GetString()].IsObject()) {
-			utility::PrintWarning("Find obj type %s in json, skip", nameStr);
+			utility::PrintWarning("Find obj type %s in json, skip\n", nameStr);
 		} else {
-			utility::PrintWarning("Find unknown type %s in json, skip", nameStr);
+			utility::PrintWarning("Find unknown type %s in json, skip\n", nameStr);
 		}
 	}
  
