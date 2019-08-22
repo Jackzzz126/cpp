@@ -10,6 +10,7 @@ using namespace open3d;
 
 #include "util.h"
 #include "cmdline.h"
+#include "config.h"
 
 //#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
@@ -20,21 +21,18 @@ int main(int argc, char *argv[]) {
 
 	parser.add<string>("operation", 'o', "operation name", false, "make", cmdline::oneof<string>("make", "intergration"));
 	parser.add<string>("config", 'c', "config file", false, "./config.json");
+	parser.add<string>("intrinsic", 'i', "intrinsic matrix", false, "./camera.json");
 
 	parser.parse_check(argc, argv);
 	string op = parser.get<string>("operation");
 	string configFilePath = parser.get<string>("config");
+	string intrinsicFilePath = parser.get<string>("config");
 
-	map<string, string> config;
-	config["aaa"] = "aaa";
-	config["bbb"] = "bbb";
-	config["ccc"] = "ccc";
-	//if(!util::loadConfig(configFilePath/*, gConfig*/)) {
-	//	utility::PrintError("Read config file error");
-	//	return 1;
-	//}
-	for(auto k : config) {
-		cout<<k.first<<":"<<k.second<<endl;
+	Config config;
+	if(!config.LoadFromJson(intrinsicFilePath)) {
+		return 1;
 	}
+
+	return 0;
 }
 #endif//CATCH_CONFIG_MAIN
