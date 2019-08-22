@@ -138,12 +138,7 @@ void show(const string& typeName, const string& fileName, const string& trajecto
 	return ;
 }
 
-bool loadConfig(const string& configFilePath/*, map<int, int>& config*/) {
-	return true;
-}
-
-vector<string> splitStr(const string &str, const string &pattern)
-{
+vector<string> splitStr(const string &str, const string &pattern) {
 	vector<string> resVec;
 
 	if ("" == str) {
@@ -152,8 +147,7 @@ vector<string> splitStr(const string &str, const string &pattern)
 	size_t posStart = 0;
 	size_t posEnd = str.find(pattern);
 
-	while (posEnd != string::npos)
-	{
+	while (posEnd != string::npos) {
 		resVec.push_back(str.substr(posStart, posEnd - posStart));
 		posStart = posEnd + 1;
 		posEnd = str.find(pattern, posStart);

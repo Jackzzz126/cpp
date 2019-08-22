@@ -1,6 +1,7 @@
 #include "catch.hpp"
-#include "util.h"
 
+#ifdef CATCH_CONFIG_MAIN
+#include "util.h"
 TEST_CASE("util test", "util") {
 	SECTION("split str") {
 		REQUIRE(util::splitStr("", ":").size() == 0);
@@ -15,3 +16,4 @@ TEST_CASE("util test", "util") {
 		REQUIRE(util::splitStr(":aaa:bbb:", ":")[3] == "");
 	}
 }
+#endif// CATCH_CONFIG_MAIN
