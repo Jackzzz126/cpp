@@ -154,9 +154,9 @@ vector<string> splitStr(const string &str, const string &pattern)
 
 	while (posEnd != string::npos)
 	{
-		resVec.push_back(str.substr(posStart, posEnd));
-		posStart = posEnd;
-		posEnd = str.find(pattern);
+		resVec.push_back(str.substr(posStart, posEnd - posStart));
+		posStart = posEnd + 1;
+		posEnd = str.find(pattern, posStart);
 	}
 	resVec.push_back(str.substr(posStart, posEnd));
 
